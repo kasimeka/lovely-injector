@@ -4,6 +4,8 @@ on:
   push:
     tags:
       - "v[0-9]+.*"
+    branches:
+      - linux-ci
 
 jobs:
   prepare:
@@ -36,6 +38,7 @@ jobs:
           --notes-file NOTE.md \
 
   build-windows:
+    if: github.repository == 'ethangreen-dev/lovely-injector'
     needs: prepare
     runs-on: windows-latest
     strategy:
@@ -68,6 +71,7 @@ jobs:
           gh release upload ${{ github.ref_name }} lovely-${{ matrix.target }}.zip
 
   build-mac:
+    if: github.repository == 'ethangreen-dev/lovely-injector'
     needs: prepare
     strategy:
       matrix:

@@ -94,6 +94,11 @@ jobs:
         run: |
           pip3 install ziglang==0.13.0.post1 cargo-zigbuild
 
+      - name: hmmmmmmmmmmm
+        run: |
+          sudo apt update && sudo apt install tree -y
+          tree /opt/MacOSX11.3.sdk
+
       - name: Build
         run: cargo zigbuild --target ${{ matrix.target }} --package lovely-unix --release
 
